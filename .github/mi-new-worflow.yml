@@ -3,10 +3,12 @@ on:
   push
     branches: [ "curso-github-actions" ]
 
+    workflow_dispatch:
+
     jobs:
       workflow-ejemplo
         runs-on: ubuntu-latest
           steps:
             name: Hola mundo
-              run: python script.py
+              run: python bienvenidos.py
               

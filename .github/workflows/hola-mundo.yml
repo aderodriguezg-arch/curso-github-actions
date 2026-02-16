@@ -4,12 +4,25 @@ on:
     branches: [ "curso-github-actions" ]
 
   workflow_dispatch:
+    inputs:
+      nombre:
+        required: true
+        type: string
+        description: "Nomnbre"
+      apellido:
+        required: true
+        type: string
+        description: "Apellido"
+        
 
 jobs:
   workflow-ejemplo:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: hola mundo
+      - name: Install dependencies
         run: |
-            python bienvenidos.py
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+      - name: Run script with parameters
+        run: |
+            python bienvenidos.py ${{ inputs.nombre }} ${{ inputs.apellido }}

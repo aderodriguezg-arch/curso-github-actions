@@ -9,6 +9,7 @@ jobs:
   workflow-ejemplo:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - name: hola mundo
         run: |
             python bienvenidos.py
